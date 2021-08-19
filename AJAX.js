@@ -7,7 +7,7 @@ function AJAX(method, URL, data, cb) {
         }
     }
 
-    data = temp;
+    data = temp.join('&');
 
     if (method.toLowerCase() === 'get') {
         URL += '?' + data;
