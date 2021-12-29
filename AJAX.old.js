@@ -42,13 +42,21 @@ function AJAX_(method_, URL_, data_, success_, fail_) {
         if (x.readyState === 4) {
             if (x.status === 200) {
                 if (success_) {
-                    success_(JSON.parse(x.response));
+                    success_(process_(x.response));
                 }
             } else {
                 if (fail_) {
-                    fail_(x);
+                    fail_(process_(x.response));
                 }
             }
+        }
+    }
+
+    function process_(response) {
+        if (x.getResponseHeader('Content-Type') === 'application/json') {
+            return JSON.parse(response);
+        } else {
+            return response;
         }
     }
 }
