@@ -11,9 +11,9 @@ function AJAX_(method_, URL_, data_, success_, fail_) {
                 temp.push(`${i}=${data_[i]}`);
             }
         }
-    }
 
-    data_ = temp.join('&');
+        data_ = temp.join('&');
+    }
 
     if (data_ && method_.toLowerCase() === 'get') {
         URL_ += '?' + data_;
@@ -27,7 +27,7 @@ function AJAX_(method_, URL_, data_, success_, fail_) {
             x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         }
 
-        var csrf_ = d.querySelector('meta[name="csrf-token"]');
+        let csrf_ = document.querySelector('meta[name="csrf-token"]');
 
         if (csrf_) {
             x.setRequestHeader('X-CSRF-TOKEN', csrf_.content);
