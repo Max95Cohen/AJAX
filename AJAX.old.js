@@ -22,9 +22,9 @@ function AJAX_(method_, URL_, data_, success_, fail_) {
 
     x.open(method_, URL_, true);
 
-    if (method_.toLowerCase() === 'post') {
-        x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
+    if (method_.toLowerCase() === 'post') {
         if (!isFile_) {
             x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         }
