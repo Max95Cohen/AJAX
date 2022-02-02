@@ -16,6 +16,12 @@ function AJAX_(method_, URL_, data_, success_, fail_) {
     }
 
     if (data_ && method_.toLowerCase() === 'get') {
+        if (URL_.indexOf('?') > 0) {
+            URL_ += '&';
+        } else {
+            URL_ += '?';
+        }
+
         URL_ += '?' + data_;
         data_ = null;
     }
