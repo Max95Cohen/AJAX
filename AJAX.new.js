@@ -1,4 +1,28 @@
-function AJAX_(method_, URL_, data_, success_, fail_) {
+function AJAX_(method_, URL_, data_, success_, fail_, JSONP_) {
+    if (JSONP_) {
+        let callbackName_ = 'a' + String(Math.random()).slice(-6);
+
+        w[callbackName_] = function (data) {
+            if (success_) {
+                success_(data);
+            }
+
+            setTimeout(function () {
+                script_.parentNode.removeChild(script_);
+            }, 1);
+        };
+
+        URL_ += ~URL_.indexOf('?') ? '&' : '?';
+        URL_ += 'callback=' + callbackName_;
+
+        let script_ = d.createElement('script');
+        script_.src = URL_;
+
+        d.body.appendChild(script_);
+
+        return true;
+    }
+
     let temp = [],
         x = new XMLHttpRequest(),
         isFile_ = false;
