@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAx</title>
+</head>
+<body>
+
+<!--<script src="AJAX.new.js" type="text/javascript"></script>-->
+<script src="AJAX.old.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    AJAX_('get', 'https://developer.mozilla.org/', {name: 'Name'}, function (result) {
+        console.log(result)
+    }, function (error) {
+        console.error(error);
+    });
+</script>
+
+</body>
+</html>

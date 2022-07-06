@@ -1,8 +1,8 @@
 function AJAX_(method_, URL_, data_, success_, fail_, JSONP_) {
-    if (JSONP) {
+    if (JSONP_) {
         var callbackName_ = 'a' + String(Math.random()).slice(-6);
 
-        w[callbackName_] = function (data) {
+        window[callbackName_] = function (data) {
             if (success_) {
                 success_(data);
             }
@@ -15,10 +15,10 @@ function AJAX_(method_, URL_, data_, success_, fail_, JSONP_) {
         URL_ += ~URL_.indexOf('?') ? '&' : '?';
         URL_ += 'callback=' + callbackName_;
 
-        var script_ = d.createElement('script');
+        var script_ = document.createElement('script');
         script_.src = URL_;
 
-        d.body.appendChild(script_);
+        document.body.appendChild(script_);
 
         return true;
     }
